@@ -42,8 +42,7 @@ describe('When: I use the reading list feature', () => {
     );
     cy.get(
       '.undo-dialog > .mat-simple-snackbar > .mat-simple-snackbar-action > button'
-    )
-      .first()
+    ).focused()
       .click();
     cy.get('.want-to-read').first().should('not.be.disabled');
     cy.get('.want-to-read').first().click();
