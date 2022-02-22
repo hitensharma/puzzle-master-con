@@ -1,6 +1,7 @@
 <ng-container *ngIf="(readingList$ | async).length > 0; else empty">
   <div
     class="reading-list-item"
+    data-testing="reading-list-item"
     *ngFor="let b of readingList$ | async; trackBy: trackByList"
   >
     <div>
@@ -12,12 +13,13 @@
         {{ b.authors.join(',') }}
       </div>
     </div>
-    <div>
+    <div class="reading-list-button">
       <button
         mat-icon-button
         color="warn"
         [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
         (click)="removeFromReadingList(b)"
+        class="read-button"
       >
         <mat-icon>remove_circle</mat-icon>
       </button>
