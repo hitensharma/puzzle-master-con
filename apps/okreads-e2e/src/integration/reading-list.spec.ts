@@ -40,7 +40,7 @@ describe('When: I use the reading list feature', () => {
             0
           );
           cy.get('[data-testing="toggle-reading-list"]').click();
-          cy.get('[data-testing="finish-button"]').first().click();
+          cy.get('[data-testing="finish-button"]').first().click({force:true});
 
           cy.get('[data-testing="reading-list-item"]').should(
             'contain.text',
@@ -72,12 +72,12 @@ describe('When: I use the reading list feature', () => {
 
             cy.get('[data-testing="finish-button"]')
               
-              .then(($btn) => {
-                if ($btn.is(':disabled')) {
+              .then(($readBtn) => {
+                if ($readBtn.is(':disabled')) {
                   cy.get('[data-testing="remove-button"]').first().click();
                 } else {
                   cy.get('[data-testing="finish-button"]').click({
-                    multiple: true,
+                    multiple: true
                   });
 
                   cy.get('[data-testing="reading-list-item"]').should(

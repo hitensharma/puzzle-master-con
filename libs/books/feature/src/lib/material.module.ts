@@ -8,7 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-let EXPORTS = [
+const EXPORTS = [
   MatButtonModule,
   MatInputModule,
   MatIconModule,
