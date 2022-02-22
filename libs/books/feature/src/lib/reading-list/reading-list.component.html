@@ -7,12 +7,24 @@
       <img class="reading-list-item--cover" [src]="b.coverUrl" />
     </div>
     <div class="reading-list-item--details">
-      <strong class="reading-list-item--details--title">{{ b.title }}</strong>
+      <strong class="reading-list-item--details--title">
+        {{ b.title }}
+        <small *ngIf="b.finished">(Finished)</small>
+      </strong>
       <div class="reading-list-item--details--author">
         {{ b.authors.join(',') }}
       </div>
     </div>
-    <div>
+    <div class="reading-list-item--buttons">
+      <button
+        mat-icon-button
+        [matTooltip]="!b.finished ? 'Mark Book as Finished' : ''"
+        [attr.aria-label]="'Finished ' + b.title + ' in reading list'"
+        (click)="finishBookFromReadingList(b)"
+        [disabled]="b.finished"
+      >
+        <mat-icon>done_outline</mat-icon>
+      </button>
       <button
         mat-icon-button
         color="warn"
