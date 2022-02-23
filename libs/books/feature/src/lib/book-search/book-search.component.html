@@ -36,12 +36,18 @@
           <p [innerHTML]="b.description"></p>
           <div>
             <button
+              class="want-to-read"
+              data-testing="want-to-read"
               mat-flat-button
               color="primary"
               (click)="addBookToReadingList(b)"
               [disabled]="b.isAdded"
+              *ngIf="!b.finished"
             >
               Want to Read
+            </button>
+            <button mat-flat-button color="primary" *ngIf="b.finished" disabled>
+              Finished
             </button>
           </div>
         </div>
@@ -52,9 +58,11 @@
 <ng-template #empty>
   <div class="empty">
     <p>
-      Try searching for a topic, for example "<a (click)="searchExample()"
-        >JavaScript</a
-      >".
+      Try searching for a topic, for example "
+      <a (click)="searchExample()">
+        JavaScript
+      </a>
+      ".
     </p>
   </div>
 </ng-template>

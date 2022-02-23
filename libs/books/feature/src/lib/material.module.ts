@@ -6,14 +6,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const EXPORTS = [
   MatButtonModule,
-  MatBadgeModule,
-  MatIconModule,
   MatInputModule,
+  MatIconModule,
+  MatBadgeModule,
   MatSnackBarModule,
   MatSidenavModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

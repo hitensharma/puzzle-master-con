@@ -45,3 +45,10 @@
   font-size: 1rem;
   color: $gray60;
 }
+
+.reading-list-item--buttons {
+  flex-direction: row !important;
+  &-done {
+    color: green;
+  }
+}
