@@ -20,6 +20,7 @@
         [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
         (click)="removeFromReadingList(b)"
         class="read-button"
+        data-testing="remove-button"
       >
         <mat-icon>remove_circle</mat-icon>
       </button>
