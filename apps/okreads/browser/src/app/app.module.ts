@@ -7,7 +7,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksFeatureModule } from '@tmo/books/feature';
-import { MaterialModule } from 'libs/books/feature/src/lib/material.module';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +19,10 @@ import { MaterialModule } from 'libs/books/feature/src/lib/material.module';
     BrowserModule,
     HttpClientModule,
     BooksFeatureModule,
-    MaterialModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
     StoreModule.forRoot(
       {},
       {
