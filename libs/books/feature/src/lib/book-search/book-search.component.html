@@ -8,14 +8,18 @@
       formControlName="term"
     />
     <button mat-icon-button matSuffix>
-      <mat-icon>search</mat-icon>
+      <mat-icon class="icon">search</mat-icon>
     </button>
   </mat-form-field>
 </form>
 
 <ng-container *ngIf="searchTerm; else empty">
   <div class="book-grid">
-    <div class="book" data-testing="book-item" *ngFor="let b of books">
+    <div
+      class="book"
+      data-testing="book-item"
+      *ngFor="let b of books; trackBy: trackByBooks"
+    >
       <div class="book--title">
         {{ b.title }}
       </div>

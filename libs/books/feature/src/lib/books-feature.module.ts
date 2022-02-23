@@ -4,36 +4,28 @@ import { RouterModule } from '@angular/router';
 import { BooksDataAccessModule } from '@tmo/books/data-access';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TotalCountComponent } from './total-count/total-count.component';
 import { ReadingListComponent } from './reading-list/reading-list.component';
+import { MaterialModule } from './material.module';
 
 const EXPORTS = [
   BookSearchComponent,
   TotalCountComponent,
-  ReadingListComponent
+  ReadingListComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatBadgeModule,
-    MatIconModule,
-    MatInputModule,
-    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: BookSearchComponent }
+      { path: '', pathMatch: 'full', component: BookSearchComponent },
     ]),
-    BooksDataAccessModule
+    BooksDataAccessModule,
+    MaterialModule,
   ],
   exports: [...EXPORTS],
-  declarations: [...EXPORTS]
+  declarations: [...EXPORTS],
 })
 export class BooksFeatureModule {}

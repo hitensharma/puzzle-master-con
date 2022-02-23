@@ -65,3 +65,9 @@ main {
 .reading-list-content {
   padding: $spacing-xxs;
 }
+
+@media screen and (max-width: 576px) {
+  .reading-list-container {
+    width: 80vw;
+  }
+} 
