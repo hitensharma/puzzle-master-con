@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksFeatureModule } from '@tmo/books/feature';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +19,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserModule,
     HttpClientModule,
     BooksFeatureModule,
+    MatBadgeModule,
+    MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     StoreModule.forRoot(
