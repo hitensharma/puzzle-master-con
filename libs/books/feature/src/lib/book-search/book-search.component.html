@@ -14,8 +14,8 @@
 </form>
 
 <ng-container *ngIf="searchTerm; else empty">
-  <div class="book-grid">
-    <div
+  <ul class="book-grid">
+    <li
       class="book"
       data-testing="book-item"
       *ngFor="let b of books; trackBy: trackByBooks"
@@ -36,6 +36,8 @@
           <p [innerHTML]="b.description"></p>
           <div>
             <button
+              data-testing="want-to-read"
+              class="want-to-read"
               mat-flat-button
               color="primary"
               (click)="addBookToReadingList(b)"
@@ -46,15 +48,17 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </ng-container>
 <ng-template #empty>
   <div class="empty">
     <p>
-      Try searching for a topic, for example "<a (click)="searchExample()"
-        >JavaScript</a
-      >".
+      Try searching for a topic, for example "
+      <a (click)="searchExample()">
+        JavaScript
+      </a>
+      ".
     </p>
   </div>
 </ng-template>
