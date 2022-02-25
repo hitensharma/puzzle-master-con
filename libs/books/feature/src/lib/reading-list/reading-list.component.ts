@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
-import { FeatureService } from '../feature.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'tmo-reading-list',
@@ -11,11 +11,11 @@ import { FeatureService } from '../feature.service';
 export class ReadingListComponent {
   readingList$ = this.store.select(getReadingList);
 
-  constructor(private readonly store: Store, private feature: FeatureService) {}
+  constructor(private readonly store: Store, private msgService: MessageService) {}
 
   removeFromReadingList(item) {
     this.store.dispatch(removeFromReadingList({ item }));
-    this.feature.showMessage('Removed', item);
+    this.msgService.showMessage('Book Removed', item);
   }
 
   trackByList(index, item) {

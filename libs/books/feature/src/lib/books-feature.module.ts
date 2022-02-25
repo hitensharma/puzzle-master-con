@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TotalCountComponent } from './total-count/total-count.component';
 import { ReadingListComponent } from './reading-list/reading-list.component';
 import { MaterialModule } from './material.module';
-import { FeatureService } from './feature.service';
+import { MessageService } from './message.service';
 
 const EXPORTS = [
   BookSearchComponent,
@@ -28,6 +28,6 @@ const EXPORTS = [
   ],
   exports: [...EXPORTS],
   declarations: [...EXPORTS],
-  providers:[FeatureService]
+  providers:[MessageService]
 })
 export class BooksFeatureModule {}

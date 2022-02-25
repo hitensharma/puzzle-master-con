@@ -10,12 +10,12 @@ import { Book, ReadingListItem } from '@tmo/shared/models';
 @Injectable({
   providedIn: 'root',
 })
-export class FeatureService {
+export class MessageService {
   constructor(private snackBar: MatSnackBar, private readonly store: Store) {}
 
   public showMessage(message: string, item): void {
     const snackBarRef = this.snackBar.open(message, 'Undo', {
-      duration: 60000,
+      duration: 5000,
       panelClass: 'undo-dialog',
     });
 
@@ -27,11 +27,11 @@ export class FeatureService {
         .getElementsByClassName('mat-button-base')[0]
         .setAttribute('data-testing', 'undo-button');
       item = JSON.parse(JSON.stringify(item));
-      if (message === 'Added') {
+      if (message === 'Book Added') {
         item.bookId = item.id;
         this.store.dispatch(removeFromReadingList({ item }));
       }
-      if (message === 'Removed') {
+      if (message === 'Book Removed') {
         const book: Book = item;
         this.store.dispatch(addToReadingList({ book }));
       }

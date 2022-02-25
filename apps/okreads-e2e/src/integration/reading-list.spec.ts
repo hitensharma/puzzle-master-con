@@ -55,7 +55,6 @@ describe('When: I use the reading list feature', () => {
             0
           );
 
-          
           // ? REMOVE FROM READING LIST UNDO BUTTON
           cy.get('.want-to-read').first().click();
           cy.get('.want-to-read').first().should('be.disabled');
@@ -84,7 +83,7 @@ describe('When: I use the reading list feature', () => {
             'have.length.greaterThan',
             0
           );
-        } else {          
+        } else {
           // ? ADD TO READING LIST UNDO BUTTON
           cy.get('.want-to-read').first().click();
           cy.get('.want-to-read').first().should('be.disabled');
@@ -137,37 +136,5 @@ describe('When: I use the reading list feature', () => {
           );
         }
       });
-
-    // cy.get('.want-to-read').first().click();
-    // cy.get('.want-to-read').first().should('be.disabled');
-
-    // cy.get('.undo-dialog > .mat-simple-snackbar > span').should(
-    //   'contain.text',
-    //   'Added'
-    // );
-    // cy.get(
-    //   '.undo-dialog > .mat-simple-snackbar > .mat-simple-snackbar-action > button'
-    // ).click();
-    // cy.get('.want-to-read').first().should('not.be.disabled');
-    // cy.get('.want-to-read').first().click();
-    // cy.get('.want-to-read').first().should('be.disabled');
-
-    // cy.get('[data-testing="reading-list-item"]').should(
-    //   'have.length.greaterThan',
-    //   0
-    // );
-    // cy.get('[data-testing="toggle-reading-list"]').click();
-    // cy.get('.reading-list-item > .reading-list-button > button').click();
-    // cy.get('.undo-dialog > .mat-simple-snackbar > span').should(
-    //   'contain.text',
-    //   'Removed'
-    // );
-    // cy.get(
-    //   '.undo-dialog > .mat-simple-snackbar > .mat-simple-snackbar-action > button'
-    // ).focused()
-    //   .click();
-    // cy.get('.want-to-read').first().should('not.be.disabled');
-    // cy.get('.want-to-read').first().click();
-    // cy.get('.want-to-read').first().should('be.disabled');
   });
 });
