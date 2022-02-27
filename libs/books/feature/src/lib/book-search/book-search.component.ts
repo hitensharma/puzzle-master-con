@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   addToReadingList,
@@ -9,7 +9,7 @@ import {
 } from '@tmo/books/data-access';
 import { FormBuilder } from '@angular/forms';
 import { Book } from '@tmo/shared/models';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -22,8 +22,10 @@ import {
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss'],
 })
-export class BookSearchComponent implements OnInit, AfterViewInit {
+export class BookSearchComponent implements OnInit, AfterViewInit, OnDestroy {
   books: ReadingListBook[];
+  booksSubscription!: Subscription;
+  searchSubscription!: Subscription;
 
   searchForm = this.fb.group({
     term: '',
@@ -39,9 +41,11 @@ export class BookSearchComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe((books) => {
-      this.books = books;
-    });
+    this.booksSubscription = this.store
+      .select(getAllBooks)
+      .subscribe((books) => {
+        this.books = books;
+      });
   }
 
   formatDate(date: void | string) {
@@ -72,10 +76,9 @@ export class BookSearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.searchForm
+    this.searchSubscription = this.searchForm
       .get('term')
-      .valueChanges
-      .pipe(
+      .valueChanges.pipe(
         filter(Boolean),
         debounceTime(500),
         distinctUntilChanged(),
@@ -91,5 +94,10 @@ export class BookSearchComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.booksSubscription && this.booksSubscription.unsubscribe();
+    this.searchSubscription && this.searchSubscription.unsubscribe();
   }
 }
