@@ -59,7 +59,7 @@ export class ReadingListEffects implements OnInitEffects {
       concatMap(({ item }) =>
         this.http
           .put(
-            `/api/reading-list/${item.bookId}?property_name=finished&property_value=true`,
+            `/api/reading-list/${item.bookId}/finished`,
             {}
           )
           .pipe(

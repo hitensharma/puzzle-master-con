@@ -58,7 +58,7 @@ const readingListReducer = createReducer(
       {
         ...action.item,
         finished: true,
-        finishedDate: String(new Date().toISOString),
+        finishedDate: String(new Date().toISOString()),
       },
       state
     )

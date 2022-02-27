@@ -30,14 +30,8 @@ export class ReadingListController {
     return await this.readingList.removeBook(params.id);
   }
 
-  @Put('/reading-list/:id')
-  async finishBookFromReadingList(@Param() params, @Query() query) {
-    const propertyName = query.property_name;
-    const propertyValue = query.property_value;
-    return await this.readingList.finishBook(
-      params.id,
-      propertyName,
-      propertyValue
-    );
+  @Put('/reading-list/:id/finished')
+  async finishBookFromReadingList(@Param() params) {
+    return await this.readingList.finishBook(params.id);
   }
 }

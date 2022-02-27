@@ -29,14 +29,10 @@ export class ReadingListService {
     });
   }
 
-  async finishBook(
-    id: string,
-    propertyName: string,
-    propertyValue: string
-  ): Promise<void> {
+  async finishBook(id: string): Promise<void> {
     this.storage.update((list) => {
       const index = list.findIndex((x) => x.bookId === id);
-      list[index][propertyName] = propertyValue;
+      list[index].finished = true;
       return list;
     });
   }
