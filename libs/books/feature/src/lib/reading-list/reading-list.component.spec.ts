@@ -10,7 +10,7 @@ describe('ReadingListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [BooksFeatureModule, SharedTestingModule]
+      imports: [BooksFeatureModule, SharedTestingModule],
     }).compileComponents();
   }));
 
@@ -22,5 +22,13 @@ describe('ReadingListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have <p> with "You haven\'t added any books to your reading list yet."', () => {
+    const readElement: HTMLElement = fixture.nativeElement;
+    const p = readElement.querySelector('p')!;
+    expect(p.textContent).toEqual(
+      "You haven't added any books to your reading list yet."
+    );
   });
 });
