@@ -11,7 +11,7 @@ describe('ProductsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [BooksFeatureModule, NoopAnimationsModule, SharedTestingModule]
+      imports: [BooksFeatureModule, NoopAnimationsModule, SharedTestingModule],
     }).compileComponents();
   }));
 
@@ -23,5 +23,25 @@ describe('ProductsListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeDefined();
+  });
+
+  it('should have <input> with placeholder "Search for books to add to your reading list"', () => {
+    const inputElement: HTMLElement = fixture.nativeElement;
+    const input = inputElement.querySelector('input')!;
+    expect(input.placeholder).toEqual(
+      'Search for books to add to your reading list'
+    );
+  });
+  it('should have create <button>', () => {
+    const buttonElement: HTMLElement = fixture.nativeElement;
+    const button = buttonElement.querySelector('button')!;
+    expect(button).toBeDefined();
+  });
+  it('should have <p> with "Try searching for a topic, for example "JavaScript"."', () => {
+    const searchElement: HTMLElement = fixture.nativeElement;
+    const p = searchElement.querySelector('p')!;
+    expect(p.textContent).toEqual(
+      ' Try searching for a topic, for example "JavaScript". '
+    );
   });
 });
