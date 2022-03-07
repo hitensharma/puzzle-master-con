@@ -28,16 +28,14 @@ describe('When: I use the reading list feature', () => {
             0
           );
           cy.get('[data-testing="close-reading-list"]').click();
-         checkUndo()
+          checkUndo();
         } else {
-          checkUndo()
+          checkUndo();
         }
       });
   });
 
-  
-
-  function checkUndo(){
+  function checkUndo() {
     // ? ADD TO READING LIST UNDO BUTTON
     cy.get('.want-to-read').first().click();
     cy.get('.want-to-read').first().should('be.disabled');
@@ -51,7 +49,9 @@ describe('When: I use the reading list feature', () => {
     );
     cy.get(
       '.undo-dialog > .mat-simple-snackbar > .mat-simple-snackbar-action > button'
-    ).last().click();
+    )
+      .last()
+      .click();
     cy.get('.want-to-read').first().should('not.be.disabled');
     cy.get('[data-testing="reading-list-item"]').should(
       'have.length.at.most',
